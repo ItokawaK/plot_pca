@@ -10,7 +10,6 @@ from openpyxl.chart import shapes
 from ast import parse
 import pandas as pd
 import matplotlib.pyplot as plt
-# pyrefly: ignore [missing-import]
 import matplotlib
 matplotlib.use('Agg')
 # import numpy as np
