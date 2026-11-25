@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 # pyrefly: ignore [missing-import]
 import matplotlib
 matplotlib.use('Agg')
-import numpy as np
+# import numpy as np
 import argparse
 import os
 import seaborn as sns
@@ -131,8 +131,12 @@ def plot_pca(pca_file,
     # Load data
     pca_df, variance_ratio = load_data(pca_file, pop_file, pop_col, pca_x, pca_y)
 
-    # Make dictionaries to map POP to color and marker shape
+    # If pop_col is None, use a temporary column '_pop_' with 'NA' for all individuals
+    if pop_col is None:
+        pca_df['_pop_'] = 'NA'
+        pop_col = '_pop_'
 
+    # Make dictionaries to map POP to color and marker shape
     pop_color = {}
     pop_marker = {}
     unique_pop = pca_df[pop_col].unique()
